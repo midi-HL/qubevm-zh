@@ -8,7 +8,6 @@ QubeVM is a QEMU-based virtual machine emulator for Android
 
 <p align="center">
   <a href="https://discord.gg/dZbQeakC6Y"><img src="https://img.shields.io/badge/Discord-5865F2?logo=discord&logoColor=ffffff&style=flat" alt="Discord"></a>
-  <a href="#donations"><img src="https://img.shields.io/badge/Donate-USDC-2775CA?logo=circle&logoColor=white&style=flat" alt="Donate"></a>
 </p>
 
 ## What it does
@@ -54,16 +53,6 @@ Users running a **custom kernel** with KVM enabled can use KVM acceleration inst
 
 ## Docs
 For a detailed information, check the [Docs](docs/index.md)
-
-## Contributions
-Contributions from people are always welcome,
-But please make sure of how practical is the code before the pull request
-
-## Donations
-
-Any and all donations are appreciated.
-
-**(USDC on Arc)** `0x3A6179c7369f6CE578b795B90Cc834136824F9ec`
 
 ## License
 This project is licensed under the **GPL-3.0**
