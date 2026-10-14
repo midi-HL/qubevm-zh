@@ -125,7 +125,7 @@
     <string name="EnableKVMWarning">Внимание! Вам понадобится устройство Android с той же архитектурой, что и эмулируемая гостевая система. Убедитесь, что установлено ядро Android с поддержкой KVM. Если вы не знаете, что это такое, нажмите Отмена.\n\nЕсли возникают сбои, отключите эту опцию. Хотите продолжить?</string>
     <string name="EnableKVM">Включить KVM</string>
     <string name="server">Сервер</string>
-    <string name="ExtraParams">Дополнительные параметры</string>
+    <string name="ExtraParams">Доп. Параметры</string>
     <string name="CouldNotCreateBaseDir">Не удалось создать базовый каталог</string>
     <string name="CouldNotCreateMachineDir">Не удалось создать каталог машины</string>
     <string name="CouldNotCreateDirForImage">Не удалось создать каталог для образа</string>
@@ -283,7 +283,7 @@
 
     <!-- Advanced section -->
     <string name="section_advanced">Дополнительно</string>
-    <string name="extra_params_label">Дополнительные параметры</string>
+    <string name="extra_params_label">Доп. Параметры</string>
     <string name="extra_params_hint">-device sb16,-cpu max,...</string>
 
     <!-- Log view -->

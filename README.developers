@@ -58,9 +58,9 @@ https://github.com/rhn-1k/QubeVM
     mv qemu-11.1.2 qemu
 
     ##### GET glib
-    wget https://download.gnome.org/sources/glib/2.88/glib-2.88.3.tar.xz
-    tar -xJf glib-2.88.3.tar.xz
-    mv glib-2.88.3 glib
+    wget https://download.gnome.org/sources/glib/2.88/glib-2.90.1.tar.xz
+    tar -xJf glib-2.90.1.tar.xz
+    mv glib-2.90.1 glib
 
     ##### GET libffi
     wget https://github.com/libffi/libffi/releases/download/v3.8.0/libffi-3.8.0.tar.gz
@@ -74,10 +74,10 @@ https://github.com/rhn-1k/QubeVM
     cd pixman && bash autogen.sh && cd ..
 
     ##### GET libslirp (QEMU 7.2+ need to build it separately, built as a subproject)
-    wget https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v4.9.4/libslirp-v4.9.4.zip
+    wget https://gitlab.freedesktop.org/slirp/libslirp/-/archive/v4.9.5/libslirp-v4.9.5.zip
     mkdir -p qemu/subprojects
-    unzip libslirp-v4.9.4.zip -d qemu/subprojects/
-    mv qemu/subprojects/libslirp-v4.9.4 qemu/subprojects/libslirp
+    unzip libslirp-v4.9.5.zip -d qemu/subprojects/
+    mv qemu/subprojects/libslirp-v4.9.5 qemu/subprojects/libslirp
 
     ##### GET libepoxy (required for virgl/OpenGL)
     wget https://github.com/anholt/libepoxy/archive/refs/tags/1.5.10.zip -O libepoxy-1.5.10.zip
@@ -110,13 +110,13 @@ https://github.com/rhn-1k/QubeVM
 
     ### Apply glib patch for QubeVM:
     cd ./qube-android-lib/src/main/jni/glib/
-    patch -p1 < ../patches/glib-2.88.3.patch
+    patch -p1 < ../patches/glib-2.90.1.patch
     # note: if you're planning to build QEMU 7.2.22 use this instead:
-    patch -p1 < ../patches/glib-2.88.3-qemu7.patch
+    patch -p1 < ../patches/glib-2.90.1-qemu7.patch
 
     ### Apply libslirp patches for QubeVM:
     cd ./qube-android-lib/src/main/jni/qemu/subprojects/libslirp/
-    patch -p1 < ../../../patches/libslirp-4.9.4.patch
+    patch -p1 < ../../../patches/libslirp-4.9.5.patch
 
     ### Apply virglrenderer patch for QubeVM (Hardware Acceleration):
     cd ./qube-android-lib/src/main/jni/virglrenderer/
