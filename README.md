@@ -16,9 +16,22 @@ Emulates a full virtual machine on Android, allowing installation and execution 
 
 QubeVM currently supports **QEMU 11.1.2 and 7.2.22**, compiled natively for Android as a `.so` library without relying on third-party wrappers
 
+## Requirements
+
+- **Android 11+**
+- **2 GB RAM minimum** (more depending on guest OS)
+- **64-bit CPU** with a capable GPU, Adreno recommended over Mali if VirGL is used
+- **Root (optional)** needed for TAP networking and KVM
+
 ## Supported CPU Architecture
 
-x86 / ARM / PowerPC / m68k
+**Guest OS** is the operating system you plan to run
+
+**Host device** is the device running the guest OS
+
+Guest architectures: x86, ARM, PowerPC, m68k
+
+Host architectures: ARM64 and x86_64
 
 ### Acceleration
 QubeVM offers different ways to run your virtual machine depending on your device:
@@ -55,7 +68,7 @@ Users running a **custom kernel** with KVM enabled can use KVM acceleration inst
 For a detailed information, check the [Docs](docs/index.md)
 
 ## License
-This project is licensed under the **GPL-3.0**
+This project is licensed under the **GNU General Public License v3.0**
 See [COPYING](COPYING) for more info
 
 ## Credits
@@ -66,8 +79,9 @@ QubeVM is a forked and improved version of the [Limbo PC Emulator](https://githu
 - [glib](https://gitlab.gnome.org/GNOME/glib.git)
 - [virglrenderer](https://gitlab.freedesktop.org/virgl/virglrenderer)
 - [libepoxy](https://github.com/anholt/libepoxy)
-- [pixman](https://gitlab.freedesktop.org/pixman/pixman)
+- [pixman](https://gitlab.freedesktop.org/pixman)
 - [libffi](https://github.com/libffi/libffi)
+- [libslirp](https://gitlab.freedesktop.org/slirp/libslirp)
 
-QubeVM also uses some code from:
-- [avnc](https://github.com/gujjwal00/avnc) Virtual keys, ported to QubeVM
+QubeVM also includes code from:
+- [avnc](https://github.com/gujjwal00/avnc) Virtual keys
