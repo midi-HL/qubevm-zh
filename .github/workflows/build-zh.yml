@@ -7,6 +7,11 @@ on:
     paths:
       - 'qube-android-lib/src/main/res/values-zh/**'
       - 'tools/gate-zh.py'
+      - 'tools/gate-minsdk29.py'
+      - 'tools/gate-storage-saf.py'
+      - 'qube-android-lib/src/main/assets/QEMU_VERSION'
+      - 'qube-android-lib/src/main/java/com/max2idea/android/qube/jni/VMExecutor.java'
+      - 'qube-android-lib/src/main/java/com/max2idea/android/qube/main/QubeActivity.java'
       - '.github/workflows/build-zh.yml'
 
 env:
@@ -25,6 +30,9 @@ jobs:
 
       - name: Run minSdk 29 (Android 10) gate
         run: python3 tools/gate-minsdk29.py
+
+      - name: Run storage / SAF / QEMU_VERSION gate
+        run: python3 tools/gate-storage-saf.py
 
   build:
     name: Build APK (arm64-v8a)

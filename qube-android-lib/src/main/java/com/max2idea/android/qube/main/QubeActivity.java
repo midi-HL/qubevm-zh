@@ -1413,9 +1413,20 @@ public class QubeActivity extends AppCompatActivity
             public void run() {
                 if (QubeSettingsManager.isFirstLaunch(QubeActivity.this)) {
                     onFirstLaunch();
-                } else {
-                    checkStoragePermission();
                 }
+                // 无论是否首次启动，都必须确保「所有文件访问」权限就绪。
+                //
+                // 原来只在 else 分支调用 checkStoragePermission()，首次启动时
+                // 依赖 许可弹窗 -> Help.showHelp(onDismiss) 这条回调链。链上任何
+                // 一环中断（Installer.installFiles 抛异常、用户直接从最近任务划掉
+                // 应用等），权限请求就被整条跳过 —— 表现就是系统设置里显示
+                // 「未请求任何权限」，随后 QEMU 以进程自身 UID open() 共享存储，
+                // 被 SELinux 拒绝：Permission denied。
+                //
+                // checkStoragePermission() 内部已有
+                // if (!Environment.isExternalStorageManager()) 判据，
+                // 已授权时不会重复弹窗，因此这里无条件调用是安全的。
+                checkStoragePermission();
             }
         });
         t.start();

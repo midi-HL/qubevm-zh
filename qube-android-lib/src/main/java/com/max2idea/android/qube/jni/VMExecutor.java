@@ -565,6 +565,24 @@ class VMExecutor extends MachineExecutor {
                 || driveFilePath.equals("None"))
             return null;
 
+        // SAF /content// 路径必须优先交给 native compat 层的 FD 桥
+        // （qube_compat_filesystem.c 的 android_open/android_fopen 会把
+        //  "/content/" 前缀识别出来并回掉 Java 的 get_fd() 拿到 ParcelFileDescriptor）。
+        //
+        // 这里**绝不能**先尝试解析成裸绝对路径：targetSdk 37 下
+        //  requestLegacyExternalStorage 已失效，原生 QEMU 用进程自己的 UID
+        //  去 open() 共享存储会被 SELinux 拒绝：
+        //      avc: denied { read } ... scontext=u:r:untrusted_app
+        //      Could not open '/storage/emulated/0/windows/....qcow2': Permission denied
+        // 只有 App 通过 SAF 持有的那个 FD 才带授权。
+        //
+        // 裸路径（非 content://）保持原样返回，走普通 open()。
+        if (driveFilePath.startsWith("/content//") || driveFilePath.startsWith("content://")) {
+            String encoded = FileUtils.getQemuFilePath(driveFilePath);
+            Log.d(TAG, "getDriveFilePath: keeping SAF path for FD bridge: " + encoded);
+            return encoded;
+        }
+
         String realPath = FileUtils.getRealPathForFile(QubeApplication.getInstance(), driveFilePath);
         if (realPath != null) {
             Log.d(TAG, "getDriveFilePath: resolved to real path: " + realPath);
