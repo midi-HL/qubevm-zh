@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  QubeVM 简体中文翻译（仅 GUI 显示层）
+
+  安全原则：
+  1. 只翻译"给人看"的字符串。任何会被当作逻辑值 / QEMU 参数 / 数据库值 / 比较依据的
+     字符串一律不放入本文件 —— 缺失时 Android 自动回退到 values/strings.xml 的英文原值。
+  2. 不翻译 translatable="false" 的条目（如 Default = "default"，它会作为
+     -drive cache= 参数传给 QEMU，翻成中文会让 VM 无法启动）。
+  3. 不翻译 array.xml 中的 *Values 数组（数字/协议值）。
+  4. 保留 CDATA 段与其中的 HTML 标签，仅翻译可见文字。
+  5. 宁可少翻，不可错翻：未翻译项会安全回退英文。
+-->
+<resources>
+
+    <!-- ===== 主界面 / 工具栏 ===== -->
+    <string name="button_send_text">发送文本</string>
+    <string name="center_mouse">鼠标</string>
+    <string name="close">关闭</string>
+    <string name="reset">重置</string>
+    <string name="shutdown">关机</string>
+    <string name="minimize">最小化</string>
+    <string name="showkbd_label">键盘</string>
+    <string name="help">帮助</string>
+    <string name="drives">驱动器</string>
+    <string name="hide_toolbar">隐藏工具栏</string>
+    <string name="view_log">查看日志</string>
+    <string name="screenshot">截图</string>
+    <string name="screenshot_saved">截图已保存：</string>
+    <string name="screenshot_failed">截图失败</string>
+    <string name="volume">音量</string>
+    <string name="Volume">音量</string>
+    <string name="toggle_virtual_keys">切换虚拟按键</string>
+    <string name="desktopMode">桌面模式</string>
+    <string name="orientation">屏幕方向</string>
+    <string name="keyboard">键盘</string>
+    <string name="mouse">鼠标</string>
+    <string name="Mouse">鼠标</string>
+    <string name="faq">常见问题</string>
+    <string name="Exit">退出</string>
+
+    <!-- ===== 共享文件夹服务器 ===== -->
+    <string name="share_folder_server">共享文件夹服务器</string>
+    <string name="share_folder_stopped_title">共享文件夹服务器未运行</string>
+    <string name="share_folder_stopped_desc">共享文件夹服务器会开启一个 HTTP 服务来共享文件，让虚拟机可以直接访问手机的 Download 目录。与普通共享文件夹（vvfat）不同，它能即时发现新增文件；vvfat 必须重启虚拟机才能看到新文件。</string>
+    <string name="share_folder_running_title">共享文件夹服务器正在运行</string>
+    <string name="share_folder_running_desc">共享文件夹服务器地址：</string>
+    <string name="share_folder_start_error">无法启动共享服务器，端口可能已被占用</string>
+    <string name="share_server_start">启动共享</string>
+    <string name="share_server_stop">停止共享</string>
+    <string name="copy_link">复制链接</string>
+    <string name="SharedFolder">共享文件夹</string>
+    <string name="SharedFolderNotSupported">共享文件夹位置在当前设备上不可访问，已跳过。请选择设备内置存储中的文件夹。</string>
+
+    <!-- ===== 显示 ===== -->
+    <string name="display">显示</string>
+    <string name="displayInfoTitle">显示</string>
+    <string name="displayInfoMessage"><![CDATA[
+        <b>QGE（Qube 图形引擎）</b>是内置的优化显示封装，以原生方式接收并显示画面，没有延迟<br/><br/>
+        <b>VNC（虚拟网络计算）</b>适合想把本应用当作服务端使用的用户：它只启动 QEMU 的 VNC 服务器，不在应用内打开画面，你可以用任意外部 VNC 客户端连接虚拟机。
+    ]]></string>
+    <string name="absolutePointerInstructions">请确认客户机系统支持触摸屏设备！\n\n \
+        在启动机器前，请在 Qube 中把「鼠标」设为「usb-tablet」。</string>
+    <string name="externalMouseInstructions">请把 USB 或蓝牙鼠标插入你的 Android 设备。</string>
+
+    <!-- ===== 欢迎 / 更新 ===== -->
+    <string name="welcomeText">欢迎使用 Qube 模拟器，这是面向 Android 设备的 QEMU 移植版。Qube 可以模拟多种操作系统。下载链接、使用指南和虚拟磁盘镜像请访问 Qube Wiki。请只从可信网站下载软件和镜像！</string>
+    <string name="checkForUpdates">启动时检查更新</string>
+    <string name="CheckSoftwareUpdates">检查软件更新</string>
+    <string name="CheckSoftwareUpdatesSummary">启动时检查软件更新</string>
+    <string name="GenNewVersion">获取新版本</string>
+    <string name="NewVersion">新版本</string>
+    <string name="NewVersionWarning">有新版本可用，包含问题修复和新功能。是否更新？</string>
+    <string name="DoNotShowAgain">不再显示</string>
+    <string name="Changelog">更新日志</string>
+    <string name="CHANGELOG">更新日志</string>
+    <string name="License">许可证</string>
+    <string name="GoToWiki">在线 Wiki</string>
+    <string name="Discord">Discord</string>
+
+    <!-- ===== 通用状态 ===== -->
+    <string name="Running">运行中</string>
+    <string name="Stopped">已停止</string>
+    <string name="vmNotRunning">虚拟机未运行</string>
+    <string name="VMNotRunning">虚拟机未运行</string>
+    <string name="VMRunning">虚拟机运行中</string>
+    <string name="PleaseWait">请稍候</string>
+    <string name="Error">错误</string>
+    <string name="SomethingWentWrong">出错了</string>
+    <string name="CopySummary">复制</string>
+    <string name="UnknownErrorCause">虚拟机意外停止，无法确定具体原因。</string>
+    <string name="sdcardNotMounted">错误：SD 卡未挂载</string>
+
+    <!-- ===== 按钮 / 对话框通用 ===== -->
+    <string name="Ok">确定</string>
+    <string name="Cancel">取消</string>
+    <string name="Yes">是</string>
+    <string name="No">否</string>
+    <string name="Create">创建</string>
+    <string name="open">打开</string>
+    <string name="Send">发送</string>
+    <string name="SendText">发送文本</string>
+    <string name="Save">保存</string>
+    <string name="select_label">选择</string>
+    <string name="clear_label">清除</string>
+    <string name="IAcknowledge">我已知晓</string>
+    <string name="OkIUnderstand">允许</string>
+    <string name="CopyTo">复制到</string>
+    <string name="DoYouWantToContinue">是否继续？</string>
+
+    <!-- ===== 屏幕方向（仅标签，值在 array.xml 中保持数字）===== -->
+    <string name="Auto">自动</string>
+    <string name="Landscape">横屏</string>
+    <string name="LandscapeReverse">横屏（反向）</string>
+    <string name="Portrait">竖屏</string>
+    <string name="PortraitReverse">竖屏（反向）</string>
+
+    <!-- ===== 机器管理 ===== -->
+    <string name="machineHeader">机器：</string>
+    <string name="NoMachineSelected">未选择机器</string>
+    <string name="CreateMachine">创建机器</string>
+    <string name="renameMachine">重命名机器</string>
+    <string name="DeleteMachine">删除机器</string>
+    <string name="DeleteVM">删除虚拟机</string>
+    <string name="deleteVMWarning">删除虚拟机？只会删除机器配置，磁盘镜像文件不会被删除</string>
+    <string name="MachineDeleted">机器已删除</string>
+    <string name="NewMachineName">新机器名称</string>
+    <string name="MachineNameCannotBeEmpty">机器名称不能为空</string>
+    <string name="VMNameExistsChooseAnother">虚拟机名称已存在，请换一个</string>
+    <string name="SelectOrCreateVirtualMachineFirst">请先选择或创建虚拟机</string>
+    <string name="SelectAMachineFirst">请先选择机器</string>
+    <string name="ShutdownVM">关闭虚拟机</string>
+    <string name="ShutdownVMWarning">为避免数据损坏，请确认你已在虚拟机内部关闭操作系统。是否继续？</string>
+    <string name="ResetVM">重置虚拟机</string>
+    <string name="ResetVMWarning">为避免数据损坏，请确认你已在虚拟机内部关闭操作系统。是否继续？</string>
+    <string name="Settings">设置</string>
+    <string name="ViewLog">查看日志</string>
+
+    <!-- ===== 目录 / 镜像 ===== -->
+    <string name="ChangeDirectory">更改目录</string>
+    <string name="chooseDirToCreateImage">请选择创建镜像的目录</string>
+    <string name="ImageCreated">镜像已创建</string>
+    <string name="ImageName">镜像名称</string>
+    <string name="ImageFilenameCannotBeEmpty">镜像文件名不能为空</string>
+    <string name="FileExistsChooseAnotherFilename">文件已存在，请另选文件名</string>
+    <string name="CouldNotOpenDocFile">无法打开文件</string>
+    <string name="CouldNotOpenRawFile">无法打开原始文件</string>
+    <string name="PleaseReassingYourDiskFiles">请从文件管理器重新选择磁盘文件</string>
+    <string name="FilePathNotSupportedWarning">不支持该文件路径。请从内置存储或外置 SD 卡中选择文件或目录，不支持根目录和 Download 目录。</string>
+    <string name="FullAccessWarning">请允许访问设备存储，否则应用无法正常工作</string>
+    <string name="CouldNotCreateBaseDir">无法创建基础目录</string>
+    <string name="CouldNotCreateMachineDir">无法创建机器目录</string>
+    <string name="CouldNotCreateDirForImage">无法为镜像创建目录</string>
+    <string name="failToCreateMachineDirError">无法创建内部机器目录</string>
+    <string name="InstallRoms">安装 ROM</string>
+
+    <!-- ===== 可移动驱动器 ===== -->
+    <string name="RemovableDrives">可移动驱动器</string>
+    <string name="EjectedDevice">已弹出设备</string>
+    <string name="ChangedDevice">已更换设备</string>
+    <string name="NoRemovableDevicesAttached">未连接可移动设备</string>
+    <string name="EnableQMPForChangingDrives">请在设置中启用 QMP 以更换可移动驱动器</string>
+
+    <!-- ===== 日志 ===== -->
+    <string name="QubeLog">Qube 日志</string>
+    <string name="ChooseDirToSaveLogFile">选择保存日志文件的目录</string>
+    <string name="FailedToSaveLogFile">保存日志文件失败：</string>
+    <string name="FailedSaveLogFile">保存日志文件失败</string>
+    <string name="LogfileSaved">日志文件已保存</string>
+
+    <!-- ===== 网络 ===== -->
+    <string name="network">网络</string>
+    <string name="Network">网络</string>
+    <string name="network_label">网络</string>
+    <string name="NicCard">网卡</string>
+    <string name="network_card_label">网卡</string>
+    <string name="DNSServer">DNS 服务器</string>
+    <string name="dns_server_label">DNS 服务器</string>
+    <string name="HostForward">主机端口转发</string>
+    <string name="host_forward_label">主机端口转发</string>
+    <string name="server">服务器</string>
+    <string name="tapUserId">TAP 用户 ID</string>
+    <string name="TapDeviceFound">找到 TAP 设备</string>
+    <string name="tapNotSupportInstructions">\"你的设备不支持 TAP，请改用「用户」网络模式 \"</string>
+    <string name="tunDeviceWarning">警告！请确认设备 /dev/net/tun 具有相应权限\n用户 ID</string>
+    <string name="externalNetworkWarning">警告！不建议为不信任的镜像或老旧系统镜像启用外部网络。运行虚拟机前请把网络设为「无」。 \n</string>
+
+    <!-- ===== 性能 / 高级 ===== -->
+    <string name="HighPriority">高优先级</string>
+    <string name="highPriorityWarning">警告！高优先级可能提升模拟速度，但会让手机变慢！</string>
+    <string name="advancedTools">高级工具</string>
+    <string name="ExtraParams">额外参数</string>
+    <string name="extra_params_label">额外参数</string>
+    <string name="EnableKVM">启用 KVM</string>
+    <string name="EnableKVMWarning">警告！你需要一台与所模拟客户机架构相同的 Android 设备，并已安装支持 KVM 的 Android 内核。如果你不清楚这是什么，请现在按「取消」。\n\n如果出现崩溃，请关闭此选项。是否继续？</string>
+    <string name="enableMTTCG">启用 MTTCG</string>
+    <string name="enableMTTCGWarning">启用 MTTCG 需要多核 CPU 的手机。\n如果你不清楚这是什么，请按「取消」。\n\n如果应用崩溃或卡死，请关闭此选项。是否继续？</string>
+    <string name="tcgBufferLabel">TCG 缓冲区</string>
+    <string name="multipleVCPU">多虚拟 CPU</string>
+    <string name="multipleVCPUWarning">警告！除非使用 KVM 或 MTTCG，否则设置多个虚拟 CPU 不会提升性能。你的设备甚至可能变慢，客户机系统也可能卡死，因此建议只使用 1 个 CPU。 \n\n</string>
+    <string name="disableTSCInstructions">如果客户机系统无法启动，请勾选「禁用 TSC」并重启虚拟机。</string>
+
+    <!-- ===== VNC / QMP ===== -->
+    <string name="vncServer">VNC 服务器</string>
+    <string name="AllowExternalVNCConnections">允许外部 VNC 连接</string>
+    <string name="AllowExternalVNCSummary">允许外部 VNC 客户端连接。需要重启应用。VNC 连接未加密，请仅在可信的私有网络中使用！</string>
+    <string name="ExternalVNCEnabledWarning">你已启用外部 VNC。同一网络上的任何人都可以访问并控制你的虚拟机！请确认你的网络可信。是否继续？</string>
+    <string name="EnableQMPServer">启用 QMP 服务器</string>
+    <string name="EnableQMPServerSummary">运行 QMP 服务器。更换可移动驱动器需要它。</string>
+    <string name="AllowExternalQMPConnections">允许外部 QMP 连接</string>
+    <string name="AllowExternalQMPConnectionsSummary">允许外部 QMP 客户端连接。需要重启应用。连接未加密，请仅在可信的私有网络中使用！</string>
+
+    <!-- ===== 界面设置项 ===== -->
+    <string name="AlwaysShowToolbar">始终显示工具栏</string>
+    <string name="AlwaysToolbar">始终显示工具栏</string>
+    <string name="PointerSpeed">指针速度</string>
+    <string name="PointerSpeedSummary">触控板 / 相对模式下光标的移动速度</string>
+    <string name="RefreshRate">虚拟机刷新率</string>
+    <string name="RefreshRateSummary">虚拟机画面的刷新率，数值越高越流畅但更耗资源</string>
+    <string name="mouseButtonDelay">鼠标按键点击延迟</string>
+    <string name="mouseButtonDelaySummary">鼠标按键点击之间的延迟。数值越低性能越好，但模拟器可能无法识别鼠标事件，因此请使用较高的值。</string>
+    <string name="diskCache">磁盘缓存</string>
+    <string name="diskCacheSummary">如果遇到问题，请设为 Default</string>
+    <string name="ClearDirHistory">清除目录历史</string>
+    <string name="ClearDirHistorySummary">清除所有存储和可移动存储中记住的文件路径</string>
+    <string name="ClearDirHistoryConfirm">这将清除所有记住的文件路径。\n     是否继续？</string>
+    <string name="DirHistoryCleared">目录历史已清除</string>
+    <string name="WriteAccess">写权限</string>
+    <string name="Interface">接口</string>
+
+    <!-- ===== 机器配置分区标题 ===== -->
+    <string name="section_user_interface">用户界面</string>
+    <string name="section_board">主板</string>
+    <string name="section_disks">磁盘</string>
+    <string name="section_removable">可移动设备</string>
+    <string name="section_bios">BIOS</string>
+    <string name="section_boot">启动</string>
+    <string name="section_graphics">图形</string>
+    <string name="section_audio">音频</string>
+    <string name="section_advanced">高级</string>
+
+    <!-- ===== 主板 ===== -->
+    <string name="machine_type_label">机器类型</string>
+    <string name="cpu_model_label">CPU 型号</string>
+    <string name="cpu_cores_label">CPU 核心数</string>
+    <string name="ram_memory_label">内存 (MB)</string>
+    <string name="disable_hpet_label">禁用 HPET</string>
+    <string name="disable_tsc_label">禁用 TSC</string>
+    <string name="disable_acpi_label">禁用 ACPI</string>
+
+    <!-- ===== 磁盘 / 可移动 ===== -->
+    <string name="hard_disk_a_label">硬盘 A</string>
+    <string name="hard_disk_b_label">硬盘 B</string>
+    <string name="hard_disk_c_label">硬盘 C</string>
+    <string name="hard_disk_d_label">硬盘 D</string>
+    <string name="cdrom_label">光盘</string>
+    <string name="floppy_a_label">软盘 A</string>
+    <string name="floppy_b_label">软盘 B</string>
+    <string name="usb_label">USB 驱动器</string>
+    <string-array name="diskSizeOptions">
+        <item>1GB（可增长）</item>
+        <item>2GB（可增长）</item>
+        <item>4GB（可增长）</item>
+        <item>10 GB（可增长）</item>
+        <item>16 GB（可增长）</item>
+        <item>32 GB（可增长）</item>
+        <item>48 GB（可增长）</item>
+        <item>64 GB（可增长）</item>
+        <item>128 GB（可增长）</item>
+        <item>256 GB（可增长）</item>
+    </string-array>
+
+    <!-- ===== BIOS / 启动 ===== -->
+    <string name="bios_type_label">BIOS 类型</string>
+    <string name="bios_code_label">代码</string>
+    <string name="bios_vars_label">变量</string>
+    <string name="boot_menu_label">启动菜单</string>
+    <string name="boot_from_label">从设备启动</string>
+    <string name="bios_label">BIOS</string>
+    <string name="kernel_label">内核</string>
+    <string name="initrd_label">Initrd</string>
+    <string name="append_label">附加参数</string>
+    <string name="append_hint">例：root=/dev/sda1</string>
+
+    <!-- ===== 图形 ===== -->
+    <string name="video_display_label">视频显示</string>
+    <string name="use_venus_accelerator_label">Venus 加速器</string>
+    <string name="virgl_requires_qge">3D 加速使用 QGE 显示，Qube 已自动切换</string>
+    <string name="videoDisplayInfoTitle">视频显示</string>
+    <string name="videoDisplayInfoMessage"><![CDATA[
+        <b>std</b> 是 QEMU 自带的标准稳定选项。<br/><br/>
+        <b>cirrus</b> 适合 90 年代的老操作系统。<br/><br/>
+        <b>vmware</b> 模拟 VMware SVGA，适合 Windows。<br/><br/>
+        <b>virtio</b> 是半虚拟化 GPU，不带 3D 加速。<br/><br/>
+        <b>virtio-gpu-pci</b> 与 virtio 相同，但带 PCI 模拟<br/><br/>
+        <b>virtio-gpu-gl-pci</b> 通过 VirGL 启用 3D 加速并带 PCI 模拟，对不支持的系统可能表现不佳，但有助于减少画面撕裂。<br/><br/>
+        <b>virtio-vga-gl (x86)</b> 通过 VirGL 启用 3D 加速，对不支持的系统可能表现不佳，但有助于减少画面撕裂。<br/><br/>
+        <b>virtio-gpu-gl-device (Arm)</b> 通过 VirGL 启用 3D 加速，针对 Arm 客户机做了优化，对不支持的系统可能表现不佳，但有助于减少画面撕裂。<br/><br/>
+        <b>nographic</b> 完全关闭显示输出，仅使用串口控制台，适合无界面运行。
+    ]]></string>
+    <string name="venusInfoTitle">Venus 加速器</string>
+    <string name="venusInfoMessage"><![CDATA[
+        <b>Venus</b> 是新的 VirGL Vulkan 加速器。它能提升图形性能，但在部分设备或虚拟机系统上可能不稳定。
+    ]]></string>
+
+    <!-- ===== 音频 ===== -->
+    <string name="AudioCard">声卡</string>
+    <string name="sound_card_label">声卡</string>
+
+    <!-- ===== 虚拟按键编辑器 ===== -->
+    <string name="pref_customize_virtual_keys">自定义虚拟按键</string>
+    <string name="customizeVirtualKeysSummary">添加、删除或重新排列虚拟按键</string>
+    <string name="msg_tap_to_select_a_key">点击选择一个按键</string>
+    <string name="msg_saved">已保存</string>
+    <string name="title_add_key">添加按键</string>
+    <string name="title_move_up">上移</string>
+    <string name="title_move_down">下移</string>
+    <string name="title_delete_key">删除按键</string>
+    <string name="title_load_defaults">恢复默认</string>
+    <string name="ShowAllVirtualKeys">默认显示所有按键</string>
+    <string name="ShowAllVirtualKeysSummary">在默认布局中加入 F1-F12、Insert 和 Delete</string>
+    <string name="OpenVirtualKeysWithKeyboard">随键盘打开</string>
+    <string name="OpenVirtualKeysWithKeyboardSummary">软键盘弹出时自动显示虚拟按键</string>
+    <string name="UseSuperWithSingleTap">单击发送 Super 键</string>
+    <string name="UseSuperWithSingleTapSummary">单击即发送 Super 键，而不是切换状态</string>
+    <string name="VirtualKeysRowCount">行数</string>
+    <string name="VirtualKeysRowCountSummary">排列虚拟按键所使用的行数</string>
+
+    <!-- ===== 键盘布局 ===== -->
+    <string name="keyboard_layout">键盘布局</string>
+    <string name="keyboard_layout_search">搜索布局</string>
+    <string name="keyboard_layout_empty">未找到布局</string>
+
+    <!-- ===== 配置摘要 ===== -->
+    <string name="summary_none">无</string>
+    <string name="summary_machine_type">机器类型</string>
+    <string name="summary_cpu">CPU</string>
+    <string name="summary_cpu_plural">CPU</string>
+    <string name="summary_mb">MB</string>
+    <string name="summary_hda">HDA</string>
+    <string name="summary_hdb">HDB</string>
+    <string name="summary_hdc">HDC</string>
+    <string name="summary_hdd">HDD</string>
+    <string name="summary_cdrom">CDROM</string>
+    <string name="summary_fda">FDA</string>
+    <string name="summary_fdb">FDB</string>
+    <string name="summary_usb">USB</string>
+    <string name="summary_boot_from">启动自</string>
+    <string name="summary_kernel">内核</string>
+    <string name="summary_initrd">initrd</string>
+    <string name="summary_append">append</string>
+    <string name="summary_video_card">显卡</string>
+
+</resources>
