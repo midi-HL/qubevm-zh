@@ -23,6 +23,9 @@ jobs:
       - name: Run Chinese localization gate
         run: python3 tools/gate-zh.py
 
+      - name: Run minSdk 29 (Android 10) gate
+        run: python3 tools/gate-minsdk29.py
+
   build:
     name: Build APK (arm64-v8a)
     needs: gate

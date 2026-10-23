@@ -45,7 +45,13 @@ public class EdgeToEdgeUtils {
         WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(window, root);
         controller.setAppearanceLightStatusBars(false);
         controller.setAppearanceLightNavigationBars(false);
-        window.setNavigationBarContrastEnforced(false);
+        // setNavigationBarContrastEnforced() 是 API 29 (Q) 引入的框架方法。
+        // minSdk 已降到 29，API 28 及以下调用会抛 NoSuchMethodError，
+        // 因此必须按版本守护。
+        if (android.os.Build.VERSION.SDK_INT
+                >= android.os.Build.VERSION_CODES.Q) {
+            window.setNavigationBarContrastEnforced(false);
+        }
 
         final int appBarLeft = appBar.getPaddingLeft();
         final int appBarTop = appBar.getPaddingTop();

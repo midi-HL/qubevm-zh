@@ -11,6 +11,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ServiceInfo;
 import android.graphics.BitmapFactory;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.WifiLock;
@@ -22,6 +23,7 @@ import android.os.PowerManager.WakeLock;
 import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.ServiceCompat;
 
 import com.qube.emu.lib.R;
 import com.max2idea.android.qube.files.FileUtils;
@@ -168,7 +170,16 @@ public class MachineService extends Service {
                 .setLargeIcon(BitmapFactory.decodeResource(service.getResources(), R.drawable.qube)).build();
         mNotification.tickerText = text;
         mNotification.flags |= Notification.FLAG_ONGOING_EVENT;
-        service.startForeground(notifID, mNotification);
+        // manifest 声明了 android:foregroundServiceType="dataSync"。
+        // 从 API 29 (Q) 起，声明了类型的 Service 必须把类型一起传给
+        // startForeground()，否则会抛 ForegroundServiceTypeNotDefinedException。
+        // ServiceCompat.startForeground() 在低版本上自动退化为两参调用，
+        // 是同时兼容 minSdk 29 与 targetSdk 37 的正确写法。
+        ServiceCompat.startForeground(
+                service,
+                notifID,
+                mNotification,
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC);
     }
 
     public void updateServiceNotification(String text) {

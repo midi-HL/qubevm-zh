@@ -28,7 +28,7 @@ android {
     ndkVersion = rootProject.ext.ndkVersion
 
     defaultConfig{
-        minSdk = 30
+        minSdk = 29
         targetSdk = 37
         // Controls whether Venus is enabled into the app (show or hide)
         // fallbacks to false

@@ -3458,6 +3458,14 @@ public class QubeActivity extends AppCompatActivity
     //check permissions before start
     private void checkStoragePermission() {
         runOnUiThread(() -> {
+            // Android 10 (API 29) 及以下：isExternalStorageManager() 是 API 30 才有的
+            // 框架方法，调用会抛 NoSuchMethodError。这一代用的是旧的
+            // WRITE_EXTERNAL_STORAGE 运行时权限，且 manifest 里的
+            // requestLegacyExternalStorage="true" 已让共享存储直接可写，
+            // 因此无需（也无法）走「所有文件访问」流程。
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) {
+                return;
+            }
             if (!Environment.isExternalStorageManager()) {
                 new MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.WriteAccess)
