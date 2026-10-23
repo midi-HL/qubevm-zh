@@ -37,12 +37,25 @@ jobs:
           java-version: '17'
 
       - name: Set up Android SDK
-        uses: android-actions/setup-android@v3
-
-      - name: Install platform 37 + build-tools 37
         run: |
-          yes | sdkmanager --licenses > /dev/null 2>&1 || true
-          sdkmanager "platforms;android-37" "build-tools;37.0.0" "platform-tools"
+          set -euo pipefail
+          SDK_ROOT="$ANDROID_SDK_ROOT"
+          if [ -z "${SDK_ROOT:-}" ]; then SDK_ROOT="$ANDROID_HOME"; fi
+          echo "SDK_ROOT=$SDK_ROOT"
+          # 找 cmdline-tools 里最新的 sdkmanager
+          SDKMGR="$(ls -d "$SDK_ROOT"/cmdline-tools/*/bin/sdkmanager 2>/dev/null | sort -V | tail -1)"
+          if [ -z "$SDKMGR" ]; then
+            echo "::error::sdkmanager not found under $SDK_ROOT/cmdline-tools"
+            ls -la "$SDK_ROOT" || true
+            exit 1
+          fi
+          echo "SDKMGR=$SDKMGR"
+          yes | "$SDKMGR" --licenses > /dev/null 2>&1 || true
+          # 只装需要的包；不装 legacy 'tools'（已废弃，会 404）
+          "$SDKMGR" --install "platforms;android-37" "build-tools;37.0.0" "platform-tools"
+          echo "=== installed packages ==="
+          ls "$SDK_ROOT/platforms/" || true
+          ls "$SDK_ROOT/build-tools/" || true
 
       - name: Fetch prebuilt native libs from upstream release
         run: |
